@@ -1,0 +1,25 @@
+{
+	"name": "@konfirm/token",
+	"version": "0.0.0",
+	"description": "Generate verifiable tokens",
+	"main": "source/Token.js",
+	"scripts": {
+		"test": "lab -vclr"
+	},
+	"keywords": [
+		"token"
+	],
+	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
+	"license": "MIT",
+	"devDependencies": {
+		"@konfirm/labrat": "^2.0.0",
+		"eslint": "^5.16.0",
+		"eslint-config-prettier": "^4.3.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"prettier": "^1.17.1"
+	},
+	"dependencies": {
+		"@konfirm/alphabet": "^1.0.0",
+		"@konfirm/random": "^1.0.0"
+	}
+}
