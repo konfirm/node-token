@@ -1,6 +1,6 @@
 {
 	"name": "@konfirm/token",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Generate verifiable tokens",
 	"main": "source/Token.js",
 	"scripts": {
