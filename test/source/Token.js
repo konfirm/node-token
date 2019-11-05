@@ -124,8 +124,9 @@ describe('Token', () => {
 
 	it('allows the use of a custom alphabet', (next) => {
 		const length = 9;
-		const signed = Token.create(length, AlphabetSubset);
-		const regex = new RegExp(`^[${AlphabetSubset.CHARACTERS}]{${length}}$`);
+		const alphabet = new AlphabetSubset();
+		const signed = Token.create(length, alphabet);
+		const regex = new RegExp(`^[${alphabet.characters}]{${length}}$`);
 
 		expect(signed).to.be.instanceof(Token);
 		expect(String(signed)).to.equal(signed.value);

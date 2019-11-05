@@ -15,7 +15,7 @@ class Token {
 	 * @param   {Alphabet} [alphabet = Alphabet]
 	 * @return  {Token}
 	 */
-	constructor(value, alphabet = Alphabet) {
+	constructor(value, alphabet = new Alphabet()) {
 		storage.set(this, { value, alphabet });
 	}
 
@@ -109,7 +109,7 @@ class Token {
 	 * @param   {Alphabet} [alphabet = Alphabet]
 	 * @return  {Token}    token
 	 */
-	static create(length = this.DEFAULT_LENGTH, alphabet = Alphabet) {
+	static create(length = this.DEFAULT_LENGTH, alphabet = new Alphabet()) {
 		if (length <= 0) {
 			throw new Error('Cannot create without length');
 		}
@@ -118,7 +118,7 @@ class Token {
 			.map(...Random.generate(alphabet.length, length - 1))
 			.join('');
 
-		return new Token(CheckDigit.create(value, alphabet), alphabet);
+		return new this(CheckDigit.create(value, alphabet), alphabet);
 	}
 
 	/**
@@ -134,7 +134,7 @@ class Token {
 	static fromString(
 		input,
 		length = this.DEFAULT_LENGTH,
-		alphabet = Alphabet
+		alphabet = new Alphabet()
 	) {
 		const string = String(input);
 		const min = Math.max(string.length, length) << 3;
@@ -162,7 +162,7 @@ class Token {
 			return carry;
 		}, []);
 
-		return new Token(
+		return new this(
 			CheckDigit.create(alphabet.map(...reduced).join(''), alphabet),
 			alphabet
 		);

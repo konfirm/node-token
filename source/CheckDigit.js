@@ -15,7 +15,7 @@ class CheckDigit {
 	 * @param   {Alphabet}  [alphabet=Alphabet]
 	 * @return  {string}    check digit prefixed value
 	 */
-	static create(value, alphabet = Alphabet) {
+	static create(value, alphabet = new Alphabet()) {
 		return this.calculate(value, alphabet) + value;
 	}
 
@@ -28,10 +28,8 @@ class CheckDigit {
 	 * @param   {Alphabet}  [alphabet=Alphabet]
 	 * @result  {String}    check digit
 	 */
-	static calculate(value, alphabet = Alphabet) {
-		const limit =
-			alphabet.MAX_CHECKDIGIT_INDEX ||
-			Math.min(23, Math.floor(alphabet.length * 0.9));
+	static calculate(value, alphabet = new Alphabet()) {
+		const limit = Math.min(23, Math.floor(alphabet.length * 0.9));
 
 		return alphabet.charAt(value.replace(this) % limit);
 	}
@@ -45,7 +43,7 @@ class CheckDigit {
 	 * @param   {Alphabet}  [alphabet=Alphabet]
 	 * @return  {Boolean}   verifies
 	 */
-	static verify(value, alphabet = Alphabet) {
+	static verify(value, alphabet = new Alphabet()) {
 		const match = String(value).match(this);
 
 		return (
